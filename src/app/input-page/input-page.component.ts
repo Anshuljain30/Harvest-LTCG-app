@@ -54,10 +54,82 @@ export class InputPageComponent implements OnInit {
     // Check if there are any errors
     if (Object.keys(this.formErrors).length === 0) {
       this.sharedDataService.currentNav = this.formData;
-      console.log(
-        'this.sharedDataService.currentNav',
-        this.sharedDataService.currentNav
+      this.sharedDataService.jsonData = this.sharedDataService.data.map(
+        (item) => {
+          const [id, schemeName, transactionType, units, nav, amount, date] =
+            item;
+          return {
+            'Scheme Name': schemeName,
+            'Transaction Type': transactionType,
+            Units: units,
+            NAV: nav,
+            Amount: amount,
+            Date: date,
+          };
+        }
       );
+      this.sharedDataService.jsonData = this.sharedDataService.jsonData.map(
+        (obj: any) => {
+          if (obj.Date) {
+            // Convert the date string to a JavaScript Date object
+            const date = new Date(obj.Date);
+
+            // Add +5 hours and 30 minutes
+            const newDate = new Date(
+              date.getTime() + 5 * 60 * 60 * 1000 + 30 * 60 * 1000
+            );
+
+            // Format the date string in ISO 8601 format
+            obj.Date = newDate.toISOString();
+          }
+          return obj;
+        }
+      );
+      const cutoffDate = new Date('2023-04-01T00:00:00.000Z');
+      this.sharedDataService.jsonData = this.sharedDataService.jsonData.filter(
+        (record: any) => {
+          const recordDate = new Date(record.Date);
+          return recordDate < cutoffDate;
+        }
+      );
+      const { profits, units } = calculateProfit(
+        this.sharedDataService.currentNav,
+        this.sharedDataService.jsonData
+      );
+      this.sharedDataService.output = Object.keys(profits).map(
+        (schemeName) => ({
+          Scheme: schemeName,
+          Units: units[schemeName].toFixed(2),
+          Profit: profits[schemeName].toFixed(2),
+        })
+      );
+      this.router.navigate(['/result']);
+    }
+
+    function calculateProfit(currentNavs: any, purchaseData: any) {
+      const profitMap: any = {};
+      const unitMap: any = {};
+      let i = 0;
+
+      purchaseData.forEach((purchase: any) => {
+        let schemeName = purchase['Scheme Name'];
+        const units = parseFloat(purchase['Units']);
+        const purchaseAmount = parseFloat(purchase['Amount'].replace(/,/g, ''));
+
+        // Retrieve the current NAV for the scheme
+        const currentNav = currentNavs[schemeName];
+
+        unitMap[schemeName] =
+          Math.round((units + unitMap[schemeName] || 0) * 100) / 100;
+
+        profitMap[schemeName] =
+          Math.round(
+            (units * currentNav - purchaseAmount + profitMap[schemeName] || 0) *
+              100
+          ) / 100;
+      });
+
+      return { profits: profitMap, units: unitMap };
     }
 
     function isValidPositiveNumber(value: any): boolean {

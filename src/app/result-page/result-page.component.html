@@ -1,0 +1,20 @@
+<div class="result-page-container">
+  <h2>Long Term Capital Gain</h2>
+  <h3>Based on Cut Off Date - 1 Apr 2023</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Scheme</th>
+        <th>Units</th>
+        <th>Profit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of outputData">
+        <td>{{ item.Scheme }}</td>
+        <td>{{ item.Units }}</td>
+        <td>{{ item.Profit }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

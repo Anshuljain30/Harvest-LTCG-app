@@ -8,6 +8,8 @@ export class SharedDataService {
   headers: string[] = [];
   fundNames: string[] = [];
   currentNav: any = {};
+  jsonData: any = [];
+  output: any = [];
 
   constructor() {}
 }

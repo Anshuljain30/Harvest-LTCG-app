@@ -8,19 +8,21 @@ import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { InputPageComponent } from './input-page/input-page.component';
 import { SharedDataService } from './shared-data.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ResultPageComponent } from './result-page/result-page.component';
 
 const routes: Routes = [
   { path: '', component: FileUploaderComponent, pathMatch: 'full' },
   { path: 'file-uploader', component: FileUploaderComponent },
   { path: 'input-page', component: InputPageComponent },
-  // Add more routes as needed
+  { path: 'result', component: ResultPageComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     FileUploaderComponent,
-    InputPageComponent, // Declare the component
+    InputPageComponent,
+    ResultPageComponent, // Declare the component
   ],
   imports: [
     BrowserModule,
