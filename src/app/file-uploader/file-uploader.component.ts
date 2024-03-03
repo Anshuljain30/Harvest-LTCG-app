@@ -54,6 +54,9 @@ export class FileUploaderComponent {
       this.sharedDataService.fundNames = this.sharedDataService.data.map(
         (item) => item[1]
       );
+      this.sharedDataService.fundNames = [
+        ...new Set(this.sharedDataService.fundNames),
+      ];
     };
 
     reader.readAsBinaryString(file);
