@@ -46,6 +46,7 @@ export class InputPageComponent implements OnInit {
     Object.keys(this.formData).forEach((key) => {
       const value = this.formData[key];
       if (!isValidPositiveNumber(value)) {
+        this.formErrors[key] = 'Please enter a valid positive number.';
         this.openSnackBar(`Please enter a valid positive number for ${key}.`);
       }
     });
