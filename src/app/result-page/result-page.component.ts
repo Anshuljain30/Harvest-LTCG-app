@@ -20,7 +20,7 @@ export class ResultPageComponent implements OnInit {
     console.log(this.outputData);
 
     if (this.outputData.length === 0) {
-      this.router.navigate(['/']); // Navigate to the home page
+      this.router.navigate(['/'], { queryParams: { notValid: true } }); // Navigate to the home page
     }
   }
 }

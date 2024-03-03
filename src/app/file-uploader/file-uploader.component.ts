@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import * as XLSX from 'xlsx';
 import { SharedDataService } from '../shared-data.service';
 
@@ -8,11 +10,28 @@ import { SharedDataService } from '../shared-data.service';
   templateUrl: './file-uploader.component.html',
   styleUrls: ['./file-uploader.component.css'],
 })
-export class FileUploaderComponent {
+export class FileUploaderComponent implements OnInit {
   constructor(
     private router: Router,
-    public sharedDataService: SharedDataService
+    public sharedDataService: SharedDataService,
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      if (params['notValid'] === 'true') {
+        this.openSnackBar();
+      }
+    });
+  }
+
+  openSnackBar() {
+    this.snackBar.open('No Eligible Transactions', 'Close', {
+      duration: 3000,
+      verticalPosition: 'top',
+    });
+  }
 
   downloadSample() {
     const sampleFilePath = 'assets/sample.xls';
