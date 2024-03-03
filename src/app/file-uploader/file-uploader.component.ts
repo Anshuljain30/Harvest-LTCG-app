@@ -41,6 +41,8 @@ export class FileUploaderComponent {
 
       this.data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
       this.headers = this.data.shift() || []; // Remove headers from data
+      this.headers.unshift('Index');
+      this.data = this.data.map((item, index) => [index + 1, ...item]);
     };
 
     reader.readAsBinaryString(file);
