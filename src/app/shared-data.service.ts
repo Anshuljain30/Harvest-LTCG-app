@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class SharedDataService {
   data: any[][] = [];
   headers: string[] = [];
+  fundNames: string[] = [];
 
   constructor() {}
 }
