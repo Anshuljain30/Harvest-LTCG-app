@@ -11,21 +11,22 @@
     (change)="onFileSelected($event)"
     accept=".xls,.xlsx"
   />
-  <div *ngIf="data.length > 0">
+  <div *ngIf="sharedDataService.data.length > 0">
     <table>
       <caption>
         Extracted data
       </caption>
       <thead>
         <tr>
-          <th *ngFor="let header of headers">{{ header }}</th>
+          <th *ngFor="let header of sharedDataService.headers">{{ header }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of data">
+        <tr *ngFor="let row of sharedDataService.data">
           <td *ngFor="let cell of row">{{ cell }}</td>
         </tr>
       </tbody>
     </table>
+    <button class="next-button" (click)="navigateToNextPage()">Next</button>
   </div>
 </div>

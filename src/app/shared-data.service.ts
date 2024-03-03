@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SharedDataService {
-  data: any[] = []; // Define a property to hold the shared data
+  data: any[][] = [];
+  headers: string[] = [];
 
   constructor() {}
 }

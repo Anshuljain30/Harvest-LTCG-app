@@ -98,3 +98,23 @@
     font-size: 12px; /* Adjust font size for smaller screens */
   }
 }
+
+/* file-uploader.component.css */
+
+.next-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 0 auto;
+  margin: 20px auto 0; /* Add margin-top for space and center the button */
+}
+
+.next-button:hover {
+  background-color: #0056b3;
+}
