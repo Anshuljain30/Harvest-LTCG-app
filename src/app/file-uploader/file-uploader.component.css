@@ -3,7 +3,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  max-width: 600px; /* Adjust as needed */
+  max-width: 1024px; /* Adjust as needed */
   margin: auto;
   position: relative;
 }
