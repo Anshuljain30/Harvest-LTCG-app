@@ -1,1 +1,10 @@
-<p>input-page works!</p>
+<div class="input-page-container">
+  <h2>Please Provide Current NAV's</h2>
+  <form (ngSubmit)="submitForm()">
+    <div *ngFor="let fund of fundNames">
+      <label>{{ fund }}</label>
+      <input type="text" [(ngModel)]="formData[fund]" [name]="fund" />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>

@@ -7,6 +7,7 @@ export class SharedDataService {
   data: any[][] = [];
   headers: string[] = [];
   fundNames: string[] = [];
+  currentNav: any = {};
 
   constructor() {}
 }
