@@ -5,6 +5,14 @@
   padding: 20px;
   max-width: 100%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ltcg-image {
+  max-width: 50%;
+  margin-bottom: 20px;
 }
 
 .file-upload-container h2 {
@@ -61,5 +69,17 @@
   .file-upload-container label {
     font-size: 14px;
     padding: 8px 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .file-upload-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ltcg-image {
+    max-width: 100%;
+    margin-bottom: 20px;
   }
 }
