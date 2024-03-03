@@ -84,13 +84,9 @@
   background-color: #f2f2f2;
 }
 
+/* Responsive table styling */
 @media screen and (max-width: 600px) {
-  .file-upload-container {
-    padding: 10px;
-  }
-
-  .file-upload-container label {
-    font-size: 14px;
-    padding: 8px 16px;
+  .file-upload-container table {
+    font-size: 12px; /* Adjust font size for smaller screens */
   }
 }
