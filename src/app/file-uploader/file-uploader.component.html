@@ -11,8 +11,11 @@
     (change)="onFileSelected($event)"
     accept=".xls,.xlsx"
   />
-  <div *ngIf="data">
+  <div *ngIf="data.length > 0">
     <table>
+      <caption>
+        Extracted data
+      </caption>
       <thead>
         <tr>
           <th *ngFor="let header of headers">{{ header }}</th>
