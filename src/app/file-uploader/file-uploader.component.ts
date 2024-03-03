@@ -11,6 +11,22 @@ export class FileUploaderComponent {
   data: any[][] = [];
   headers: string[] = [];
 
+  downloadSample() {
+    const sampleFilePath = 'assets/sample.xls';
+    fetch(sampleFilePath)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'sample.xls';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => console.error('Error downloading sample:', error));
+  }
+
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     const reader: FileReader = new FileReader();

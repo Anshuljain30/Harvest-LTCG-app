@@ -3,16 +3,30 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  max-width: 100%;
+  max-width: 600px; /* Adjust as needed */
   margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
 }
 
 .ltcg-image {
-  max-width: 50%;
+  max-width: 100%;
   margin-bottom: 20px;
+}
+
+.download-sample-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.download-sample-btn:hover {
+  background-color: #0056b3;
 }
 
 .file-upload-container h2 {
@@ -33,6 +47,7 @@
   transition: background-color 0.3s ease;
   display: block;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .file-upload-container label:hover {
@@ -69,17 +84,5 @@
   .file-upload-container label {
     font-size: 14px;
     padding: 8px 16px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .file-upload-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .ltcg-image {
-    max-width: 100%;
-    margin-bottom: 20px;
   }
 }
