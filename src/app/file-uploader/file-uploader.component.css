@@ -29,6 +29,14 @@
   background-color: #0056b3;
 }
 
+/* Reduce button size on mobile view */
+@media screen and (max-width: 600px) {
+  .download-sample-btn {
+    padding: 4px 8px; /* Adjust button padding */
+    font-size: 10px; /* Adjust button font size */
+  }
+}
+
 .file-upload-container h2 {
   margin-bottom: 20px;
   text-align: center;
